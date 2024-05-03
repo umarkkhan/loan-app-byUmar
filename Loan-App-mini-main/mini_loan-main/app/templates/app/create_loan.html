@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Loan Request Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+            /* Center the form */
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+        
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        button[type="submit"]:focus {
+            outline: none;
+        }
+        /* Adjustments for Logout and View Loans */
+        
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .logout-form button[type="submit"],
+        .view-loans-button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: auto;
+            /* Set width to auto */
+            margin-right: 10px;
+        }
+        
+        .logout-form button[type="submit"]:hover,
+        .view-loans-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loan Request Form -->
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th colspan="2">Loan Request Form</th>
+            </tr>
+            <tr>
+                <td>Amount:</td>
+                <td><input type="text" name="amount" placeholder="Amount"></td>
+            </tr>
+            <tr>
+                <td>Term:</td>
+                <td><input type="text" name="term" placeholder="Term"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Submit Loan Request</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <!-- Logout Form -->
+    <div class="button-container">
+        <form action="{% url 'logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+
+        <a href="{% url 'loan_view' %}" class="view-loans-button">View Loans</a>
+    </div>
+</body>
+
+</html>

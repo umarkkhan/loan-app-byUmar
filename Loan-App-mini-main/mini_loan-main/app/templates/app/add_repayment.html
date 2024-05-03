@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Repayment</title>
+</head>
+
+<body>
+    <h1>Add Repayment for Loan ID: {{ loan.id }}</h1>
+    <p>Total Remaining Amount: {{ total_remaining_amount }}</p>
+
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="repayment_amount">Repayment Amount:</label>
+        <input type="number" id="repayment_amount" name="repayment_amount" min="0" step="0.01" required>
+
+        <label for="scheduled_date">Scheduled Date:</label>
+        <input type="date" id="scheduled_date" name="scheduled_date" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>
